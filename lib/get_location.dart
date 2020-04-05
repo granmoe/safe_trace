@@ -8,6 +8,8 @@ import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 
 class GetLocation extends StatefulWidget {
+  GetLocation({Key key}) : super(key: key);
+
   @override
   _GetLocationState createState() => _GetLocationState();
 }
@@ -36,6 +38,12 @@ class _GetLocationState extends State<GetLocation> {
 
     // Add if it doesn't exist
     await store.record('locationHistory').add(db, {});
+    // var update = {};
+    // update['2020-03-08'] = {
+    //   'locations': [],
+    // };
+    // await store.record('locationHistory').update(db, update);
+
     isDbInitialized = true;
   }
 
@@ -50,6 +58,8 @@ class _GetLocationState extends State<GetLocation> {
       var currentLocation = await location.getLocation();
 
       var record = store.record('locationHistory');
+      var locationHistorySnapshot = await record.get(db);
+      print(locationHistorySnapshot);
 
       var now = DateTime.now();
       String currentDate = now.toIso8601String().substring(0, 10);
@@ -87,7 +97,9 @@ class _GetLocationState extends State<GetLocation> {
             update[oldestDate] = FieldValue.delete;
             await record.update(txn, update);
           }
+
           // TODO: Recalc overall min/max
+          // min(days.map(.minLongitude))
         } else {
           var update = {};
           update[currentDate] = {
@@ -120,7 +132,7 @@ class _GetLocationState extends State<GetLocation> {
         }
       }); // await db.transaction
 
-      var locationHistorySnapshot = await record.get(db);
+      locationHistorySnapshot = await record.get(db);
       print(locationHistorySnapshot);
       yield currentLocation;
     } // while (true)

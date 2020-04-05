@@ -23,7 +23,7 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         title: Text('Flutter Demo Home Page'),
       ),
-      body: Center(child: GetLocation()),
+      body: Center(child: GetLocation(key: ValueKey('GetLocation'))),
     );
   }
 }

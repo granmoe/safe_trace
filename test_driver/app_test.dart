@@ -1,11 +1,12 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_driver/flutter_driver.dart';
 import 'package:test/test.dart';
 
+// start up a simulator
+// then
 // flutter drive --target=test_driver/app.dart
 void main() {
   group('Counter App', () {
-    final GetLocation = find.byValueKey('GetLocation');
+    final getLocation = find.byValueKey('GetLocation');
 
     FlutterDriver driver;
 
@@ -27,8 +28,7 @@ void main() {
     });
 
     test('app renders', () async {
-      // FIXME: Can this be more specific? Tried isA<Widget>(), but shit blew up
-      expect(GetLocation, isNotNull);
+      expect(getLocation, isNotNull);
     });
   });
 }

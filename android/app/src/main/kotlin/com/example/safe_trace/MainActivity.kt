@@ -1,4 +1,4 @@
-package dev.granmoe.safe_trace
+package com.example.safe_trace
 
 import androidx.annotation.NonNull;
 import io.flutter.embedding.android.FlutterActivity

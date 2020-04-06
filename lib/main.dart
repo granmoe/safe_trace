@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:safe_trace/get_location.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(App());
 
-class MyApp extends StatelessWidget {
+class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

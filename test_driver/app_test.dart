@@ -29,6 +29,7 @@ void main() {
 
     test('app renders', () async {
       expect(getLocation, isNotNull);
+      // test that we see "No location yet" / initial state
     });
   });
 }

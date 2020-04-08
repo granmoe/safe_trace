@@ -5,7 +5,7 @@ import 'package:test/test.dart';
 // then
 // flutter drive --target=test_driver/app.dart
 void main() {
-  group('Counter App', () {
+  group('Safe Trace', () {
     final getLocation = find.byValueKey('GetLocation');
 
     FlutterDriver driver;
